@@ -16,7 +16,7 @@ module GoPay
       des.encrypt
       des.key = GoPay.configuration.secret
       result = des.update(string)
-      result.unpack("H*").to_s
+      result.unpack("H*").join ""
     end
 
     def decrypt(encrypted_data, padding_off = false)
@@ -30,7 +30,7 @@ module GoPay
     end
 
     def bin2hex(bin)
-      bin.scan(/../).map { | tuple | tuple.hex.chr }.to_s
+      bin.scan(/../).map { | tuple | tuple.hex.chr }.join ""
     end
   end
 
